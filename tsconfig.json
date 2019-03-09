@@ -17,6 +17,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@env/*": ["environments/*"],
+      "@core": ["app/@core"],
+      "@core/*": ["app/@core/*"],
+      "@layout": ["app/layout"],
+      "@layout/*": ["app/layout/*"]
+    }
   }
 }
