@@ -1,6 +1,7 @@
-<nz-layout>
-  <app-header></app-header>
-  <app-sidebar></app-sidebar>
-  <nz-content>content</nz-content>
-  <app-footer></app-footer>
-</nz-layout>
+<div class="alain-default__progress-bar" *ngIf="isFetching"></div>
+<layout-header class="alain-default__header"></layout-header>
+<layout-sidebar class="alain-default__aside"></layout-sidebar>
+<section class="alain-default__content">
+  <router-outlet></router-outlet>
+</section>
+<ng-template #settingHost></ng-template>

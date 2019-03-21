@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { SettingsService } from '@delon/theme';
 
 @Component({
-  selector: 'app-header',
+  selector: 'layout-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.less']
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  searchToggleStatus: boolean;
 
-  constructor() { }
+  constructor(public settings: SettingsService) { }
 
-  ngOnInit() {
+  toggleCollapsedSidebar() {
+    this.settings.setLayout('collapsed', !this.settings.layout.collapsed);
   }
 
+  searchToggleChange() {
+    this.searchToggleStatus = !this.searchToggleStatus;
+  }
 }
