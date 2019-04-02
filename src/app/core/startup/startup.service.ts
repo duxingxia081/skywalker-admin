@@ -88,13 +88,13 @@ export class StartupService {
     // }
     // mock
     const app: any = {
-      name: `ng-alain`,
-      description: `Ng-zorro admin panel front-end framework`
+      name: `skywalker`,
+      description: `天行者`
     };
     const user: any = {
       name: 'Admin',
       avatar: './assets/tmp/img/avatar.jpg',
-      email: 'cipchk@qq.com',
+      email: 'admin@qq.com',
       token: '123456789'
     };
     // 应用信息：包括站点名、描述、年份
@@ -106,17 +106,18 @@ export class StartupService {
     // 初始化菜单
     this.menuService.add([
       {
-        text: '主导航',
+        text: '主菜单',
         group: true,
         children: [
           {
-            text: '仪表盘',
+            text: '活动管理',
             link: '/dashboard',
-            icon: { type: 'icon', value: 'appstore' }
+            icon: { type: 'icon', value: 'appstore' },
           },
           {
-            text: '快捷菜单',
-            icon: { type: 'icon', value: 'rocket' },
+            text: '用户管理',
+            link: '/dashboard',
+            icon: { type: 'icon', value: 'user' },
             shortcutRoot: true
           }
         ]
