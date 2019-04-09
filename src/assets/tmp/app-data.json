@@ -1,12 +1,12 @@
 {
   "app": {
-    "name": "Alain",
-    "description": "Ng-zorro admin panel front-end framework"
+    "name": "admin",
+    "description": "天行者"
   },
   "user": {
     "name": "Admin",
     "avatar": "./assets/tmp/img/avatar.jpg",
-    "email": "cipchk@qq.com"
+    "email": "admin@qq.com"
   },
   "menu": [
     {
@@ -16,45 +16,16 @@
       "hideInBreadcrumb": true,
       "children": [
         {
-          "text": "仪表盘",
-          "i18n": "menu.dashboard",
-          "icon": "anticon anticon-dashboard",
-          "children": [
-            {
-              "text": "仪表盘V1",
-              "link": "/dashboard/v1",
-              "i18n": "menu.dashboard.v1"
-            },
-            {
-              "text": "分析页",
-              "link": "/dashboard/analysis",
-              "i18n": "menu.dashboard.analysis"
-            },
-            {
-              "text": "监控页",
-              "link": "/dashboard/monitor",
-              "i18n": "menu.dashboard.monitor"
-            },
-            {
-              "text": "工作台",
-              "link": "/dashboard/workplace",
-              "i18n": "menu.dashboard.workplace"
-            }
-          ]
+          "text": "活动管理",
+          "i18n": "menu.activity",
+          "link": "/activity",
+          "icon": "anticon anticon-rocket"
         },
         {
-          "text": "快捷菜单",
-          "i18n": "menu.shortcut",
-          "icon": "anticon anticon-rocket",
-          "shortcutRoot": true,
-          "children": []
-        },
-        {
-          "text": "小部件",
-          "i18n": "menu.widgets",
+          "text": "人员管理",
+          "i18n": "menu.person",
           "link": "/widgets",
-          "icon": "anticon anticon-appstore",
-          "badge": 2
+          "icon": "anticon anticon-appstore"
         }
       ]
     },
