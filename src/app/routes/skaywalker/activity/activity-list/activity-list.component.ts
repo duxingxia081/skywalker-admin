@@ -26,7 +26,7 @@ export class ActivityListComponent implements OnInit {
   @ViewChild('st')
   st: STComponent;
   columns: STColumn[] = [
-    { title: '', index: 'key', type: 'checkbox' },
+    { title: '', key: 'activeId', index: 'activeId', type: 'checkbox' },
     { title: '活动名称', index: 'activeTitle' },
     { title: '活动类型', index: 'typeId' },
     { title: '活动费用', index: 'charge' },
@@ -46,12 +46,8 @@ export class ActivityListComponent implements OnInit {
       title: '操作',
       buttons: [
         {
-          text: '配置',
-          click: (item: any) => this.msg.success(`配置${item.no}`),
-        },
-        {
-          text: '订阅警报',
-          click: (item: any) => this.msg.success(`订阅警报${item.no}`),
+          text: '删除',
+          click: (item: any) => this.msg.success(`删除${item.no}`),
         },
       ],
     },

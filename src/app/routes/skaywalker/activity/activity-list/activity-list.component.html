@@ -41,7 +41,6 @@
     <span>新建</span>
   </button>
   <ng-container *ngIf="selectedRows.length > 0">
-    <button nz-button>批量操作</button>
     <nz-dropdown [nzPlacement]="'bottomLeft'">
       <button nz-button nz-dropdown>
         更多操作
@@ -56,10 +55,6 @@
   <div class="my-md">
     <nz-alert [nzType]="'info'" [nzShowIcon]="true" [nzMessage]="message">
       <ng-template #message>
-        已选择
-        <strong class="text-primary">{{selectedRows.length}}</strong> 项&nbsp;&nbsp; 服务调用总计
-        <strong>{{totalCallNo}}</strong> 万
-        <a *ngIf="totalCallNo > 0" (click)="st.clearCheck()" class="ml-lg">清空</a>
       </ng-template>
     </nz-alert>
   </div>
