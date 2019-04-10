@@ -26,7 +26,8 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘' } },
       { path: 'exception', loadChildren: './exception/exception.module#ExceptionModule' },
       // 业务子模块
-      { path: 'activity', loadChildren: './skaywalker/activity/activity.module#ActivityModule' }
+      { path: 'activity', loadChildren: './skaywalker/activity/activity.module#ActivityModule' },
+      { path: 'users', loadChildren: './skaywalker/users/users.module#UsersModule' }
     ]
   },
   // 全屏布局

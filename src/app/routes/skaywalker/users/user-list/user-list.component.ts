@@ -4,12 +4,12 @@ import { _HttpClient, ModalHelper } from '@delon/theme';
 import { ProBasicListEditComponent } from './edit/edit.component';
 
 @Component({
-  selector: 'app-activity-list',
-  templateUrl: './activity-list.component.html',
-  styleUrls: ['./activity-list.component.less'],
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ActivityListComponent implements OnInit {
+export class UserListComponent implements OnInit {
   q: any = {
     status: 'all',
   };
@@ -29,8 +29,8 @@ export class ActivityListComponent implements OnInit {
 
   getData() {
     this.loading = true;
-    this.http.get('http://localhost:9998/activity', { count: 5 }).subscribe((res: any) => {
-      this.data = res.data.list;
+    this.http.get('/api/list', { count: 5 }).subscribe((res: any) => {
+      this.data = res;
       this.loading = false;
       this.cdr.detectChanges();
     });
