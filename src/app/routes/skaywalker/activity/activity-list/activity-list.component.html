@@ -40,6 +40,10 @@
     <i nz-icon type="plus"></i>
     <span>新建</span>
   </button>
+  <button nz-button (click)="add(modalContent)" [nzType]="'primary'">
+    <i nz-icon type="plus"></i>
+    <span>新建</span>
+  </button>
   <ng-container *ngIf="selectedRows.length > 0">
     <nz-dropdown [nzPlacement]="'bottomLeft'">
       <button nz-button nz-dropdown>
@@ -64,11 +68,3 @@
     </ng-template>
   </st>
 </nz-card>
-<ng-template #modalContent>
-  <nz-form-item>
-    <nz-form-label nzFor="no">描述</nz-form-label>
-    <nz-form-control>
-      <input nz-input [(ngModel)]="description" name="description" placeholder="请输入" id="no">
-    </nz-form-control>
-  </nz-form-item>
-</ng-template>

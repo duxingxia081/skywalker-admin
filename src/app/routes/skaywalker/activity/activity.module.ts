@@ -3,12 +3,15 @@ import { SharedModule } from '@shared';
 
 import { ActivityRoutingModule } from './activity-routing.module';
 import { ActivityListComponent } from './activity-list/activity-list.component';
+import { ActivityListCreateComponent } from './activity-list/create/create.component';
 
 
 const COMPONENTS = [
   ActivityListComponent,
 ];
-const COMPONENTS_NOROUNT = [];
+const COMPONENTS_NOROUNT = [
+  ActivityListCreateComponent
+];
 
 @NgModule({
   imports: [SharedModule, ActivityRoutingModule],

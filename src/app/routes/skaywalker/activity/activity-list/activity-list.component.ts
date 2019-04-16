@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { NzMessageService, NzModalService } from 'ng-zorro-antd';
-import { _HttpClient } from '@delon/theme';
-import { STComponent, STColumn, STData, STChange } from '@delon/abc';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd';
+import { _HttpClient, ModalHelper } from '@delon/theme';
+import { STChange, STColumn, STComponent, STData } from '@delon/abc';
+import { ActivityListCreateComponent } from './create/create.component';
 
 @Component({
   selector: 'app-activity-list',
@@ -46,11 +47,14 @@ export class ActivityListComponent implements OnInit {
       title: '操作',
       buttons: [
         {
+          text: '修改',
+          click: (item: any) => this.add(item)
+        },{
           text: '删除',
-          click: (item: any) => this.msg.success(`删除${item.no}`),
-        },
-      ],
-    },
+          click: () => this.remove()
+        }
+      ]
+    }
   ];
   selectedRows: STData[] = [];
   description = '';
@@ -60,7 +64,7 @@ export class ActivityListComponent implements OnInit {
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
-    private modalSrv: NzModalService,
+    private modal: ModalHelper,
     private cdr: ChangeDetectorRef,
   ) {
   }
@@ -93,7 +97,7 @@ export class ActivityListComponent implements OnInit {
 
   remove() {
     this.http
-      .delete('/rule', { nos: this.selectedRows.map(i => i.no).join(',') })
+      .delete('/rule', { nos: this.selectedRows.map(i => i.activeId).join(',') })
       .subscribe(() => {
         this.getData();
         this.st.clearCheck();
@@ -104,17 +108,18 @@ export class ActivityListComponent implements OnInit {
     this.msg.success(`审批了 ${this.selectedRows.length} 笔`);
   }
 
-  add(tpl: TemplateRef<{}>) {
-    this.modalSrv.create({
-      nzTitle: '新建规则',
-      nzContent: tpl,
-      nzOnOk: () => {
-        this.loading = true;
-        this.http
-          .post('/rule', { description: this.description })
-          .subscribe(() => this.getData());
-      },
-    });
+  add(record: any = {}) {
+    this.modal
+      .create(ActivityListCreateComponent, { record }, { size: 'md' })
+      .subscribe(res => {
+        if (record.id) {
+          record = Object.assign(record, { id: 'mock_id', percent: 0 }, res);
+        } else {
+          this.data.splice(0, 0, res);
+          this.data = [...this.data];
+        }
+        this.cdr.detectChanges();
+      });
   }
 
   reset() {
